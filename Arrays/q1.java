@@ -1,5 +1,6 @@
 import java.util.*;
-class q1{
+
+public class q1{
 public static void main(String[] args){
 Scanner sc = new Scanner(System.in);
 System.out.println("Enter the value n for table");
