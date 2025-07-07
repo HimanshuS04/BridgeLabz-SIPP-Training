@@ -10,8 +10,16 @@ class AnimalHierarchy {
     void makeSound() {
         System.out.println("Some generic animal sound.");
     }
-}
+    public static void main(String[] args) {
+        Dog dog = new Dog("Buddy", 3);
+        Cat cat = new Cat("Whiskers", 2);
+        Bird bird = new Bird("Tweety", 1);
 
+        dog.makeSound();  // Output: Bark!
+        cat.makeSound();  // Output: Meow!
+        bird.makeSound(); // Output: Tweet!
+    }
+}
 class Dog extends AnimalHierarchy {
     Dog(String name, int age) {
         super(name, age);
