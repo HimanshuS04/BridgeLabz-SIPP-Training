@@ -1,0 +1,32 @@
+ABSTRACT CLASS Crop
+    ATTRIBUTE: name
+    CONSTRUCTOR(name)
+        SET this.name = name
+    ABSTRACT METHOD waterRequirement()
+    ABSTRACT METHOD harvest()
+
+CLASS Rice EXTENDS Crop
+    CONSTRUCTOR(name)
+        CALL super(name)
+    METHOD waterRequirement()
+        PRINT name + " requires high water supply"
+    METHOD harvest()
+        PRINT name + " is harvested in 120 days"
+
+CLASS Wheat EXTENDS Crop
+    CONSTRUCTOR(name)
+        CALL super(name)
+    METHOD waterRequirement()
+        PRINT name + " requires moderate water supply"
+    METHOD harvest()
+        PRINT name + " is harvested in 90 days"
+
+MAIN
+    CREATE riceCrop = Rice("Rice")
+    CREATE wheatCrop = Wheat("Wheat")
+
+    CALL riceCrop.waterRequirement()
+    CALL riceCrop.harvest()
+
+    CALL wheatCrop.waterRequirement()
+    CALL wheatCrop.harvest()
