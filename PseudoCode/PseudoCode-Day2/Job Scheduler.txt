@@ -1,0 +1,33 @@
+CLASS Job
+    ATTRIBUTES: id, deadline, processingTime, priority
+    CONSTRUCTOR(id, deadline, processingTime)
+        SET id = id
+        SET deadline = deadline
+        SET processingTime = processingTime
+        SET priority = deadline / processingTime   // lower value = higher priority
+
+CLASS PriorityQueue
+    ATTRIBUTES: jobs[]
+    METHOD insert(job)
+        ADD job to jobs[]
+        SORT jobs[] by priority (ascending)
+
+    METHOD getNextJob()
+        RETURN jobs[0]   // highest priority
+
+    METHOD displayJobs()
+        FOR each job in jobs
+            PRINT job.id + " → Priority: " + job.priority
+
+MAIN
+    CREATE pq = PriorityQueue()
+    CREATE job1 = Job("J1", 4, 2)
+    CREATE job2 = Job("J2", 2, 1)
+    CREATE job3 = Job("J3", 6, 3)
+
+    CALL pq.insert(job1)
+    CALL pq.insert(job2)
+    CALL pq.insert(job3)
+
+    CALL pq.displayJobs()
+    PRINT "Next Job to Execute: " + pq.getNextJob().id

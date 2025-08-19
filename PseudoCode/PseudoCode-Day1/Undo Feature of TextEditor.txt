@@ -1,0 +1,35 @@
+CLASS TextEditor
+    ATTRIBUTE: content
+    ATTRIBUTE: undoStack (Stack)
+
+    CONSTRUCTOR()
+        SET content = ""
+        CREATE undoStack = empty Stack
+
+    METHOD type(text)
+        PUSH current content INTO undoStack
+        APPEND text TO content
+        PRINT "Typed: " + text
+
+    METHOD undo()
+        IF undoStack is NOT EMPTY
+            SET content = POP from undoStack
+            PRINT "Undo performed. Current content: " + content
+        ELSE
+            PRINT "Nothing to undo."
+
+    METHOD display()
+        PRINT "Editor Content: " + content
+
+MAIN
+    CREATE editor = TextEditor()
+
+    CALL editor.type("Hello ")
+    CALL editor.type("World")
+    CALL editor.display()
+
+    CALL editor.undo()
+    CALL editor.display()
+
+    CALL editor.undo()
+    CALL editor.display()

@@ -1,0 +1,31 @@
+CLASS CircularArrayTimer
+    ATTRIBUTES: timeSlots[], size, front, rear
+    CONSTRUCTOR(size)
+        SET size = size
+        INITIALIZE timeSlots[size]
+        SET front = 0
+        SET rear = -1
+
+    METHOD addTimeSlot(time)
+        IF (rear + 1) % size == front
+            PRINT "Timer Full"
+        ELSE
+            rear = (rear + 1) % size
+            timeSlots[rear] = time
+
+    METHOD triggerWarning()
+        FOR each slot in timeSlots
+            IF slot <= 5
+                PRINT "⚠️ Warning: Only " + slot + " seconds left!"
+
+    METHOD displaySlots()
+        PRINT all timeSlots from front to rear in circular order
+
+MAIN
+    CREATE timer = CircularArrayTimer(5)
+    CALL timer.addTimeSlot(30)
+    CALL timer.addTimeSlot(20)
+    CALL timer.addTimeSlot(10)
+    CALL timer.addTimeSlot(5)
+    CALL timer.displaySlots()
+    CALL timer.triggerWarning()
