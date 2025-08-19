@@ -1,0 +1,16 @@
+CLASS Member
+    ATTRIBUTES: name, id, membershipDate
+    CONSTRUCTOR(name, id, membershipDate)
+    
+    METHOD isMembershipValid()
+        CALCULATE difference between today and membershipDate
+        RETURN true if less than 1 year, else false
+
+    METHOD displayMemberInfo()
+        PRINT name, id, membershipDate
+        PRINT result of isMembershipValid()
+
+MAIN
+    CREATE Member("Ayush", 101, 10-Feb-2025)
+    CREATE Member("Riya", 102, 15-Jul-2023)
+    CALL displayMemberInfo() for each
